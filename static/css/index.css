@@ -1,0 +1,42 @@
+
+ul{
+    list-style: none;
+    padding-left: 0;
+}
+
+ul li{
+    border-bottom: 1px solid #F3F3F3;
+    overflow: hidden;
+}
+
+.avatar-container{
+    width: 80px;
+    height: 100%;
+    float: left;
+}
+
+.avatar-container .avatar{
+    widows: 60px;
+    height: 60px;
+    border-radius: 0%;
+}
+
+
+.question-container{
+    float: left;
+    width: 600px;
+}
+
+
+.question-title a{
+    color: #225599;
+    font-weight: 700;
+}
+
+.question-info{
+    text-align: right;
+}
+
+.question-info .question-creator{
+    margin-right: 15px;
+}
