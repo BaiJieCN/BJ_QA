@@ -15,7 +15,7 @@
             </div>
             <div class="question-container">
                 <p class="question-title"><a href="{{ url_for('questiondetail',question_id=question.id) }}">{{ question.title }}</a></p>
-                <p class="question-content">{{ question.content }}</p>
+                <p class="question-content">{{ question.content|safe }}</p>
                 <div class="question-info">
                     <span class="question-creator">{{ question.creator.userid }}</span>
                     <span class="question-time">{{ question.create_timestamp }}</span>
