@@ -2,12 +2,23 @@
 
 from exts import db
 from datetime import datetime
+from werkzeug.security import generate_password_hash, check_password_hash
 
 class User(db.Model):
     __tablename__ = 'user'
     id = db.Column(db.Integer,primary_key=True,autoincrement=True)
     userid = db.Column(db.String(30),nullable=False)
     password = db.Column(db.String(100),nullable=False)
+
+    def __init__(self,*args,**kwargs):
+        userid = kwargs.get('userid')
+        password = kwargs.get('password')
+        self.userid = userid
+        self.password = generate_password_hash(password)
+
+    def check_password(self,input_password):
+        result = check_password_hash(self.password,input_password)
+        return result
 
 class Question(db.Model):
     __tablename__ = 'question'

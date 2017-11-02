@@ -7,6 +7,8 @@ from exts import db
 from decorators import login_required
 from datetime import datetime
 from sqlalchemy import or_
+from avatar_generator import Avatar
+
 
 app = Flask(__name__)
 app.config.from_object(config)
@@ -29,8 +31,8 @@ def login():
     else:
         userid = request.form.get('userid')
         password = request.form.get('password')
-        user = User.query.filter(User.userid == userid, User.password == password).first()
-        if user:
+        user = User.query.filter(User.userid == userid).first()
+        if user and user.check_password(password):
             session['user_id'] = user.userid
             session.permanent = True
             return redirect(url_for('index'))
@@ -77,6 +79,7 @@ def raisequestion():
         question.creator_id = user.id
         db.session.add(question)
         db.session.commit()
+        avatar = Avatar.generate(128, question.creator.userid)
         return redirect(url_for('index'))
 
 @app.route('/question_detail/<question_id>')
