@@ -9,12 +9,14 @@ class User(db.Model):
     id = db.Column(db.Integer,primary_key=True,autoincrement=True)
     userid = db.Column(db.String(30),nullable=False)
     password = db.Column(db.String(100),nullable=False)
+    avatar_file = db.Column(db.String(100),nullable=False)
 
     def __init__(self,*args,**kwargs):
         userid = kwargs.get('userid')
         password = kwargs.get('password')
         self.userid = userid
         self.password = generate_password_hash(password)
+        self.avatar_file = 'images/Avatar'+userid[0:1]+'.jpg'
 
     def check_password(self,input_password):
         result = check_password_hash(self.password,input_password)
