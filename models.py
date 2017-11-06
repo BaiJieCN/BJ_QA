@@ -16,7 +16,7 @@ class User(db.Model):
         password = kwargs.get('password')
         self.userid = userid
         self.password = generate_password_hash(password)
-        self.avatar_file = 'images/Avatar'+userid[0:1]+'.jpg'
+        self.avatar_file = 'images/Avatar/'+userid[0:1]+'.jpg'
 
     def check_password(self,input_password):
         result = check_password_hash(self.password,input_password)
