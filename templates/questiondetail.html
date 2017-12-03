@@ -26,7 +26,9 @@
     <h4>Answers:(0)</h4>
     <form action="{{ url_for('add_answer')}}" method="post">
     <div class="form-container">
-        <input name = "answer_content" type="text" class="form-control" placeholder="please input answer">
+{#        <input name = "answer_content" type="text" class="form-control" placeholder="please input answer">#}
+        <textarea name ="content" id="content1" rows="10" class="ckeditor">This is my textarea to be replaced with CKEditor.
+        </textarea>
         <input name = "question_id" type="hidden" value="{{ question.id }}">
     </div>
     <div class="form-group" style="text-align:right; margin: 10px">
